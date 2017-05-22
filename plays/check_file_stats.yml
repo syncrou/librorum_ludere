@@ -1,0 +1,20 @@
+---
+- name: check file stats
+  hosts: localhost
+  gather_facts: false
+  user: root
+
+  vars:
+    filepath: "/etc/resolv.conf"
+
+  tasks:    
+    - debug: var=manageiq
+      when: manageiq is defined
+
+    - stat:
+        path: "{{ filepath }}"
+      register: file_details
+    
+    - debug:
+        msg: "{{ file_details }}"
+      when: file_details.stat.exists
