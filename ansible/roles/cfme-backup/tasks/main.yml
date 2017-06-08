@@ -14,6 +14,7 @@
   register: datetimestamp
   
 - debug: msg="datetimestamp {{ datetimestamp.stdout }}"
+  when: verbose
 
 - name: archiving up CloudForms files
   # ansible 2.3 required for archive module
@@ -24,6 +25,7 @@
   register: archived_files
 
 - debug: msg="{{ archived_files }}"
+  when: verbose
 - debug: msg="backup file => {{ archived_files.dest }}"
 
 - name: removing database dumpfile
