@@ -1,6 +1,6 @@
 ---
 - name: CloudForms backup
-  hosts: localhost
+  hosts: all
   gather_facts: false
   remote_user: root
 
