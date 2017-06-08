@@ -1,4 +1,5 @@
 ---
+verbose: false
 dest_fileprefix: cfmebackup
 dest_path: /tmp/
 database_username: root
