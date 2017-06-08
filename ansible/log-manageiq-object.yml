@@ -1,0 +1,11 @@
+---
+- name: Log manageiq object
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  user: root
+
+  tasks:
+    - name: Log manageiq object
+      debug: var=manageiq
+      when: manageiq is defined

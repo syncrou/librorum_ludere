@@ -4,6 +4,10 @@
   gather_facts: false
   remote_user: root
 
+  pre_tasks:
+    - include: log-manageiq-object.yml
+      when: manageiq is defined
+
   roles:
     - { role: cfme-backup }
 
