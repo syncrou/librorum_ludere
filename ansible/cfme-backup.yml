@@ -1,11 +1,12 @@
 ---
-- name: CloudForms backup
+- name: cfme-backup
   hosts: all
   gather_facts: false
   remote_user: root
 
   pre_tasks:
-    - include: log-manageiq-object.yml
+    - name: logging manageiq object
+      debug: var=manageiq
       when: manageiq is defined
 
   roles:
