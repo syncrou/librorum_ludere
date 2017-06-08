@@ -1,11 +1,17 @@
 ---
+- name:
+  command: id
+  register: idout
+
+- debug: msg="{{ idout }}"
+
 - name: dumping database
-  shell: >
-    /opt/rh/rh-postgresql95/root/usr/bin/pg_dump -v -F custom 
+  command: >
+    pg_dump -v -F custom 
     --dbname=postgresql{{":"}}//{{ database_username }}{{":"}}{{ database_password }}@{{ ansible_host }}{{":"}}{{ database_port }}/{{ database_name }} 
     -f {{ database_dumpfile }}
-  args:
-    executable: /bin/bash
+  # args:
+  #   executable: /bin/bash
   register: dumpout
   
 - debug: msg="{{ dumpout }}"
