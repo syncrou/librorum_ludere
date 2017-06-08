@@ -7,7 +7,8 @@
   register: dumpout
   
 - debug: msg="{{ dumpout }}"
-
+  when debug is defined
+  
 - name: getting datetimestamp
   command: date +%Y%m%d%H%M%S
   register: datetimestamp
