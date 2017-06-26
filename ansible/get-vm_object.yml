@@ -1,0 +1,31 @@
+---
+- name: Get VM object
+  hosts: localhost
+  gather_facts: false
+  connection: local
+
+  vars:
+    vm_id: "{{ vm_id }}"
+
+  pre_tasks:
+    - name: logging manageiq object
+      debug: var=manageiq
+      when: manageiq is defined
+
+  tasks:
+    - name: Lookup instances href
+      uri:
+        url: "{{ manageiq.api_url }}/api/vms?filter[]=id={{ vm_id }}&expand=resources"
+        method: GET
+        body:
+          action: refresh
+        body_format: json
+        validate_certs: False
+        headers:
+          X-Auth-Token: "{{ manageiq.api_token }}"
+          Content-Type: "application/json"
+        status_code: 200
+      register: vm_object
+
+    - debug: var=vm_object
+
