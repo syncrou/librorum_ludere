@@ -31,9 +31,10 @@
 
     - set_fact:
         vm_object: "{{ vm_output.json.resources[0] }}"
-        vm_name: "{{ vm_object.name }}"
-        vm_power_state: "{{ vm_object.power_state }}"
-        vm_type: "{{ vm_object.type }}"
+        vm_name: "{{ vm_output.json.resources[0].name }}"
+        vm_power_state: "{{ vm_output.json.resources[0].power_state }}"
+        vm_type: "{{ vm_output.json.resources[0].type }}"
         
     - debug: var=vm_name
     - debug: var=vm_type
+    - debug: var=vm_object
