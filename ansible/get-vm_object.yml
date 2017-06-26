@@ -31,10 +31,27 @@
 
     - set_fact:
         vm_object: "{{ vm_output.json.resources[0] }}"
-        vm_name: "{{ vm_output.json.resources[0].name }}"
-        vm_power_state: "{{ vm_output.json.resources[0].power_state }}"
-        vm_type: "{{ vm_output.json.resources[0].type }}"
         
-    - debug: var=vm_name
-    - debug: var=vm_type
+    - debug: var=vm_object.boot_time
+    - debug: var=vm_object.cloud
+    - debug: var=vm_object.connection_state
+    - debug: var=vm_object.cpu_hot_add_enabled
+    - debug: var=vm_object.cpu_hot_remove_enabled
     - debug: var=vm_object.name
+    - debug: var=vm_object.power_state
+    - debug: var=vm_object.type
+    - debug: var=vm_object.vendor
+    - debug: var=vm_object.miq_group_id
+    - debug: var=vm_object.tenant_id
+    - debug: var=vm_object.uid_ems
+    - debug: var=vm_object.template
+    - debug: var=vm_object.storage_id
+    - debug: var=vm_object.ems_ref
+    - debug: var=vm_object.ems_id
+    - debug: var=vm_object.memory_hot_add_enabled
+    - debug: var=vm_object.tools_status
+    - debug: var=vm_object.cloud
+    - debug: var=vm_object.cloud
+    - debug: var=vm_object.cloud
+    - debug: var=vm_object.cloud
+    
