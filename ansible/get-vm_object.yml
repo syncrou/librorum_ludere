@@ -37,4 +37,4 @@
         
     - debug: var=vm_name
     - debug: var=vm_type
-    - debug: var=vm_object
+    - debug: var=vm_object.name
