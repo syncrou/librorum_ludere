@@ -27,7 +27,7 @@
         status_code: 200
       register: vm_output
 
-    - debug: var=output
+    - debug: var=vm_output
 
     - set_fact:
         vm_object: "{{ vm_output.json.resources[0] }}"
