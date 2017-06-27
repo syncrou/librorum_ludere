@@ -15,7 +15,7 @@
   tasks:
     - name: Lookup instances href
       uri:
-        url: "{{ manageiq.api_url }}/api/vms?filter[]=id={{ vm_id }}&expand=resources"
+        url: "{{ manageiq.api_url }}/api/vms?filter[]=id={{ vm_id }}&expand=resources?attributes=custom_attributes,ext_management_system,host"
         method: GET
         body:
           action: refresh
@@ -50,8 +50,4 @@
     - debug: var=vm_object.ems_id
     - debug: var=vm_object.memory_hot_add_enabled
     - debug: var=vm_object.tools_status
-    - debug: var=vm_object.cloud
-    - debug: var=vm_object.cloud
-    - debug: var=vm_object.cloud
-    - debug: var=vm_object.cloud
     
