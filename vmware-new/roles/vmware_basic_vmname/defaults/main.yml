@@ -1,0 +1,5 @@
+---
+vm_prefix: "{{vm_prefix | default('cfme') }}"
+os_prefix: "{{ os_prefix || default('r') }}"
+count: "{{ count | default(1) }}"
+name_format: "{{ vm_prefix }}{{ os_prefix }}%02x"
