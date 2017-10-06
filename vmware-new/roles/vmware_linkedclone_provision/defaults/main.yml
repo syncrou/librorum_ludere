@@ -1,6 +1,6 @@
 ---
 # vcenter parameters
-hostname: 
+vcenter_hostname: 
 username: 
 password: 
 template: "{{ vcenter_template }}"
