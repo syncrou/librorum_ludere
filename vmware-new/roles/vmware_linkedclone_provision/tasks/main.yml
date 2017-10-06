@@ -27,7 +27,7 @@
         # gateway:
         # dns_servers: # DNS servers for this network interface (Windows)
         # domain:  # Domain name for this network interface (Windows)
-    state: running
+    state: poweredon
   delegate_to: localhost
   with_items: "{{ vm_names }}"
   register: vms
