@@ -1,9 +1,9 @@
 ---
 - name: Provision VMware Instances
   vmware_guest:
-    hostname: "{{ vcenter_hostname }}"
-    username: "{{ vcenter_username }}"
-    password: "{{ vcenter_password }}"
+    hostname: 
+    username: 
+    password: 
     validate_certs: "{{ validate_certs }}"
     name: "{{ item }}"
     template: "{{ template }}"
