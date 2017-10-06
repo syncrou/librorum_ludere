@@ -15,7 +15,7 @@
   tasks:
     - name: Lookup instances href
       uri:
-        url: "{{ manageiq.api_url }}/api/vms?filter[]=id={{ vm_id }}&expand=resources"
+        url: "{{ manageiq.api_url }}/api/vms?filter[]=id={{ vm_id }}&expand=resources?attributes=custom_attributes,ext_management_system,host"
         method: GET
         body:
           action: refresh
@@ -25,7 +25,29 @@
           X-Auth-Token: "{{ manageiq.api_token }}"
           Content-Type: "application/json"
         status_code: 200
-      register: vm_object
+      register: vm_output
 
-    - debug: var=vm_object
+    - debug: var=vm_output
 
+    - set_fact:
+        vm_object: "{{ vm_output.json.resources[0] }}"
+        
+    - debug: var=vm_object.boot_time
+    - debug: var=vm_object.cloud
+    - debug: var=vm_object.connection_state
+    - debug: var=vm_object.cpu_hot_add_enabled
+    - debug: var=vm_object.cpu_hot_remove_enabled
+    - debug: var=vm_object.name
+    - debug: var=vm_object.power_state
+    - debug: var=vm_object.type
+    - debug: var=vm_object.vendor
+    - debug: var=vm_object.miq_group_id
+    - debug: var=vm_object.tenant_id
+    - debug: var=vm_object.uid_ems
+    - debug: var=vm_object.template
+    - debug: var=vm_object.storage_id
+    - debug: var=vm_object.ems_ref
+    - debug: var=vm_object.ems_id
+    - debug: var=vm_object.memory_hot_add_enabled
+    - debug: var=vm_object.tools_status
+    
