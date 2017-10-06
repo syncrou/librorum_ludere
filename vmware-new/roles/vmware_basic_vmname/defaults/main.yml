@@ -1,6 +1,5 @@
 ---
 vm_names:
-  -
 vm_prefix: # cfme
 os_prefix: # r
 count: # 1
