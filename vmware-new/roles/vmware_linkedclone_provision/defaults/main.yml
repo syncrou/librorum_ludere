@@ -1,5 +1,8 @@
 ---
 # vcenter parameters
+hostname: "{{ lookup('env', 'VMWARE_HOST') }}"
+username: "{{ lookup('env', 'VMWARE_USER') }}"
+password: "{{ lookup('env', 'VMWARE_PASSWORD') }}"
 template: "{{ vcenter_template }}"
 datacenter: "{{ vcenter_datacenter }}"
 cluster: "{{ vcenter_cluster }}"
@@ -19,3 +22,6 @@ vlan: "{{ vm_vlan }}"
 # linked clone parameters
 snapshot: "{{ snapshot }}"
 linked_clone: "{{ linked_clone | defaut(true) }}"
+
+# enable debugging
+verbose: false
