@@ -30,21 +30,16 @@
     state: poweredon
   delegate_to: localhost
   with_items: "{{ vm_names }}"
-  register: newvms
+  register: vmware_created_vms
 
-- name: Log newvms output
+- name: Log vmware_created_vms output
   debug: 
     var: item.instance.ipv4
-  with_items: "{{ newvms.results }}"
+  with_items: "{{ vmware_created_vms.results }}"
   when: verbose
 
 - name: Add newwms to a group
   add_host: 
     name: "{{ item.instance.ipv4 }}"
     groups: vmware_hosts
-  with_items: "{{ newvms.results }}"
-
-- name: Log host group vmware_hosts
-  debug: 
-    var: vmware_hosts
-  when: verbose
+  with_items: "{{ vmware_created_vms.results }}"

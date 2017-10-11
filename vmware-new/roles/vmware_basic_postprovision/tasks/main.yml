@@ -13,7 +13,7 @@
       Content-Type: "application/json"
     status_code: 200
   register: lookup_vms_output
-  with_items: "{{ newvms.results }}"
+  with_items: "{{ vmware_created_vms.results }}"
 
 - debug: var=lookup_vms_output.results
   when: verbose

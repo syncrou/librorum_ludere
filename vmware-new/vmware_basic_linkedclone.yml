@@ -1,5 +1,5 @@
 ---
-- name: vmware_basic
+- name: vmware_basic_linkedclone
   hosts: localhost
   gather_facts: false
       
@@ -12,11 +12,12 @@
     - role: vmware_linkedclone_provision
 
     - role: vmware_basic_postprovision
-      when: vms is defined and manageiq is defined
+      when: vmware_created_vms is defined and manageiq is defined
 
 - name: Perform tasks on instances
   hosts: vmware_hosts
-  # become: true
+  #become: true
+  #gather_facts: false
 
   roles:
     - role: vmware_basic_runonce
