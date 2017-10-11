@@ -32,6 +32,8 @@
   with_items: "{{ vm_names }}"
   register: vms
 
-- debug: 
-    var: vms
+- name: Log vms output
+  debug: 
+    var: item
+  with_items: "{{ vms }}"
   when: verbose
