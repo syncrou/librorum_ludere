@@ -3,5 +3,9 @@
   shell: cat /etc/resolv.conf
   register: ssh_output
 
-- debug: var=ssh_output
+- name: Log ssh_output
+  debug: 
+    var: ssh_output
   when: verbose
+
+# Add your own plays here

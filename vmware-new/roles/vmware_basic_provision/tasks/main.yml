@@ -10,8 +10,6 @@
     datacenter: "{{ datacenter }}"
     cluster: "{{ cluster }}"
     folder: "{{ folder }}"
-    snapshot_src: "{{ snapshot }}"
-    linked_clone: "{{ linked_clone }}"
     notes: "{{ notes }}"
     hardware:
       memory_mb: "{{ memory_mb }}"
