@@ -37,3 +37,9 @@
     var: item.instance.ipv4
   with_items: "{{ newvms.results }}"
   when: verbose
+
+- name: Add newwms to a group
+  add_host: 
+    name: "{{ instance.ipv4 }}"
+    groups: vmware_hosts
+  with_items: "{{ newvms.results }}"
