@@ -1,4 +1,5 @@
 ---
+vms: []
 category: lifecycle
 tag: retire_full
 miq_creds: "{{ miq_credentials | default('Basic YWRtaW46c21hcnR2bQ==') }}"

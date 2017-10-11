@@ -25,16 +25,17 @@
 - debug: var=svc_url
   when: verbose
 
-- name: Initialize an empty list for vms
-  set_fact:
-    empty_list: []
+# - name: Initialize an empty list for vms
+#   set_fact:
+#     empty_list: []
 
-- debug: var=empty_list
-  when: verbose
+# - debug: var=empty_list
+#   when: verbose
 
 - name: Append resource href to vms list
   set_fact:
-    vms: "{{ empty_list }} + [ { 'href': svc_url, 'resource': { 'href': '/api/vms/{{ item.json.resources[0].id }}' } } ]"
+    vms: "{{ vms + [ { 'href': svc_url, 'resource': { 'href': item.json.resources[0].href] }}"
+    # vms: "{{ empty_list }} + [ { 'href': svc_url, 'resource': { 'href': '/api/vms/{{ item.json.resources[0].id }}' } } ]"
   with_items: "{{ lookup_vms_output.results }}"
 
 - debug: var=vms
