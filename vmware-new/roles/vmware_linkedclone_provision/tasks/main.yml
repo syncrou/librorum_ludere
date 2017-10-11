@@ -35,5 +35,5 @@
 - name: Log vms output
   debug: 
     var: item
-  with_items: "{{ vms }}"
+  with_items: "{{ vms.results }}"
   when: verbose
