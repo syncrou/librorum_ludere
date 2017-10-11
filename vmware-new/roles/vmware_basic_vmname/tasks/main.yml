@@ -5,7 +5,7 @@
     
 - name: Generating VM name(s)
   set_fact: 
-    vm_names: "{{ empty_list + [ item ] }}"
+    vm_names: "{{ vm_names + [ item ] }}"
   with_sequence: start=1 end="{{ count }}" format="{{ name_format }}"
 
 - debug: var=vm_names
