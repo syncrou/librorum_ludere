@@ -1,7 +1,7 @@
 ---
 - name: Lookup CloudForms VM via uid_ems
   uri:
-    url: "{{ manageiq.api_url }}/api/vms?filter[]=uid_ems={{ item.hw_name }}&expand=resources"
+    url: "{{ manageiq.api_url }}/api/vms?filter[]=uid_ems={{ item.instance.hw_product_uuid }}&expand=resources"
     method: GET
     body:
       action: refresh
@@ -13,7 +13,7 @@
       Content-Type: "application/json"
     status_code: 200
   register: lookup_vms_output
-  with_items: "{{ vms.instances }}"
+  with_items: "{{ newvms.results }}"
 
 - debug: var=lookup_vms_output.results
   when: verbose
