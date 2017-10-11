@@ -34,7 +34,7 @@
 
 - name: Append resource href to vms list
   set_fact:
-    vms: "{{ vms + [ { 'href': svc_url, 'resource': { 'href': item.json.resources[0].href] }}"
+    vms: "{{ vms + [ { 'href': svc_url, 'resource': { 'href': item.json.resources[0].href } ] }}"
     # vms: "{{ empty_list }} + [ { 'href': svc_url, 'resource': { 'href': '/api/vms/{{ item.json.resources[0].id }}' } } ]"
   with_items: "{{ lookup_vms_output.results }}"
 
