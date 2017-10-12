@@ -15,6 +15,10 @@
       memory_mb: "{{ memory_mb }}"
       num_cpus: "{{ num_cpus }}"
     wait_for_ip_address: "{{ wait_for_ip_address }}"
+    customization:
+      hostname: "{{ item }}"
+    customvalues:
+      foo: bar
     networks:
       - name: "{{ vlan }}"
         device_type: vmxnet3
