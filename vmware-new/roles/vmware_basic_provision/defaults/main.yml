@@ -16,7 +16,6 @@ memory_mb: "{{ vm_memory_mb | default(1024) }}"
 num_cpus: "{{ vm_num_cpus | default(1) }}"
 notes: "{{ vm_notes | default('Provisioned by CloudForms via Ansible') }}"
 domain: "{{ vm_domain }}"
-dns_servers: "{{ vm_dns_servers }}"
 vlan: "{{ vm_vlan }}"
 
 # enable debugging
