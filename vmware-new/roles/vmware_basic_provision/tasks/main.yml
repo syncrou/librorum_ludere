@@ -16,8 +16,8 @@
       num_cpus: "{{ num_cpus }}"
     wait_for_ip_address: "{{ wait_for_ip_address }}"
     customization:
-      hostname: "{{ item }}"
-      domain: "{{ domain }}"
+      - hostname: "{{ item }}"
+      - domain: "{{ domain }}"
     networks:
       - name: "{{ vlan }}"
         device_type: vmxnet3
