@@ -17,8 +17,7 @@
     wait_for_ip_address: "{{ wait_for_ip_address }}"
     customization:
       hostname: "{{ item }}"
-    customvalues:
-      foo: bar
+      domain: "{{ domain }}"
     networks:
       - name: "{{ vlan }}"
         device_type: vmxnet3
