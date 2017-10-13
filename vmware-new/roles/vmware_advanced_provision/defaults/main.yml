@@ -21,7 +21,7 @@ networks:
     netmask: "{{ vm_netmask | default('255.255.255.224') }}"
     gateway: "{{ vm_gateway | default('10.9.62.33') }}"
     # mac: 
-    domain: "{{ vm_domain }}"
+    domain: "{{ vm_domain | default('example.com') }}"
     dns_servers:
     - 10.9.62.86
     - 8.8.8.8
