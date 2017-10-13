@@ -25,8 +25,8 @@ networks:
     dns_servers:
     - 10.9.62.86
     - 8.8.8.8
-  - vlan: 32
-    type: static
+  # - vlan: 32
+  #   type: static
 
 # disks:
 #   - size_gb: "{{ vm_disk | default(10) }}"
