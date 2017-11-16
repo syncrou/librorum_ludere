@@ -11,7 +11,7 @@ sku: 7.4
 
 # azure guest parameters
 vm_name: vm_name
-vm_size: Standard_D4
+vm_size: Standard_A1
 admin_username: admin
 admin_password: password
 ssh_keys: 
