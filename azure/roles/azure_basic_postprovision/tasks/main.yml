@@ -1,7 +1,7 @@
 ---
 - name: Lookup CloudForms VM via uid_ems
   uri:
-    url: "{{ manageiq.api_url }}/api/vms?filter[]=uid_ems={{ item.instance.hw_product_uuid }}&expand=resources"
+    url: "{{ manageiq.api_url }}/api/vms?filter[]=uid_ems={{ item.ansible_facts.azure_vm.id }}&expand=resources"
     method: GET
     body:
       action: refresh
@@ -16,7 +16,7 @@
   until: lookup_vms_output.json.subcount > 0
   retries: "{{ max_retries }}"
   delay: "{{ retry_interval }}"
-  with_items: "{{ azure_created_vms.results }}"
+  with_items: "{{ azure_created_vms }}"
 
 - name: Log lookup_vms_output.results
   debug: 
