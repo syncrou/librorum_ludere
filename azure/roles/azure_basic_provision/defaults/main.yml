@@ -1,6 +1,6 @@
 ---
 # azure parameters
-location: uswest2
+location: westus2
 resource_group: res_group1
 
 # azure image parameters
