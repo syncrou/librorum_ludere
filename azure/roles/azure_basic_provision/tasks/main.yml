@@ -14,14 +14,21 @@
 - name: Create virtual network
   azure_rm_virtualnetwork:
     resource_group: "{{ resource_group }}"
-    name: "{{ resource_group }}virtualnetwork"
-    address_prefixes: "{{ virtual_network_address_prefixe }}"
+    name: "{{ network_name }}"
+    address_prefixes: "{{ network_cidr }}"
   register: create_virtual_network_output
 
 - name: Log create_virtual_network_output
   debug: 
     var: create_virtual_network_output
   when: verbose and create_virtual_network_output is defined
+
+- name: Create subnet
+  azure_rm_subnet:
+    resource_group: "{{ resource_group }}"
+    name: "{{ subnet_name }}"
+    address_prefix: "{{ subnet_cidr }}"
+    virtual_network: "{{ network_name }}"
 
 - name: Provision Azure Instance
   azure_rm_virtualmachine:

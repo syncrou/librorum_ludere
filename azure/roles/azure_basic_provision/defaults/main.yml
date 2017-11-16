@@ -2,7 +2,10 @@
 # azure parameters
 location: westus2
 resource_group: res_group1
-virtual_network_address_prefixe: 10.10.0.0/16
+network_name: "{{ resource_group }}-network" 
+network_cidr: 10.10.0.0/16
+subnet_name: "{{ resource_group }}-subnet"
+subnet_cidr: 10.10.0.0/24
 
 # azure image parameters
 publisher: OpenLogic
