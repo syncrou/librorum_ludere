@@ -35,7 +35,7 @@
   debug: 
     var: create_subnet_output
   when: verbose and create_subnet_output is defined
-  
+
 - name: Provision Azure Instance
   azure_rm_virtualmachine:
     resource_group: "{{ resource_group }}"
@@ -54,7 +54,7 @@
 - name: Log azure_created_vms
   debug: 
     var: azure_created_vms
-  when: verbose
+  #when: verbose and azure_created_vms is defined
 
 - name: Add new wms to a group
   add_host: 
