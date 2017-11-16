@@ -65,5 +65,5 @@
   add_host: 
     name: "{{ azure_created_vms.ansible_facts.azure_vm.properties.networkInterfaces[0].ipConfigurations[0].properties.publicIPAddress.properties.ipAddress }}"
     groups: azure_hosts
-
+  when: azure_created_vms is defined
 
