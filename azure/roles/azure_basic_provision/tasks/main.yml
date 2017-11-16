@@ -36,7 +36,7 @@
     var: create_subnet_output
   when: verbose and create_subnet_output is defined
 
-- name: Provision Azure Instance
+- name: Provision azure instance
   azure_rm_virtualmachine:
     resource_group: "{{ resource_group }}"
     name: "{{ vm_name }}"
@@ -54,11 +54,16 @@
 - name: Log azure_created_vms
   debug: 
     var: azure_created_vms
-  #when: verbose and azure_created_vms is defined
+  when: verbose and azure_created_vms is defined
 
-- name: Add new wms to a group
+- name: Log azure_created_vms.ansible_facts.azure_vm.id
+  debug: 
+    var: azure_created_vms.ansible_facts.azure_vm.id
+  when: verbose and azure_created_vms is defined
+
+- name: Add azure_created_vms to a group
   add_host: 
-    name: "{{ item.instance.ipv4 }}"
+    name: "{{ azure_created_vms.ansible_facts.azure_vm.properties.networkInterfaces[0].ipConfigurations[0].properties.publicIPAddress.properties.ipAddress }}"
     groups: azure_hosts
-  with_items: "{{ azure_created_vms.results }}"
+
 
