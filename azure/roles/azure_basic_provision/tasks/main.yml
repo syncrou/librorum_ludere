@@ -18,7 +18,6 @@
     vm_size: "{{ vm_size }}"
     admin_username: "{{ admin_username }}"
     admin_password: "{{ admin_password }}"
-    ssh_password: "{{ ssh_password }}"
     ssh_public_keys: "{{ ssh_keys }}"
     image:
       offer: "{{ offer }}"
