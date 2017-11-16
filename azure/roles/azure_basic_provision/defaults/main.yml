@@ -1,0 +1,20 @@
+---
+# azure parameters
+location: uswest2
+resource_group: res_group
+
+# azure image parameters
+publisher: RedHat
+offer: CentOS
+version: Latest
+sku: 7.4
+
+# azure guest parameters
+vm_name: vm_name
+vm_size: Standard_D4
+admin_username: admin
+admin_password: password
+ssh_keys: 
+
+# enable debugging
+verbose: false

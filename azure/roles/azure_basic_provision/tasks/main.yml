@@ -1,0 +1,39 @@
+---
+- name: Ensure that the resource group
+  azure_rm_resourcegroup:
+    name: "{{ resource_group }}"
+    location: "{{ location }}"
+  register: create_resource_group_output
+  when: resource_group is defined
+
+- name: Log create_resource_group_output
+  debug: 
+    var: create_resource_group_output
+  when: verbose and create_resource_group_output is defined
+
+- name: Provision Azure Instances
+  azure_rm_virtualmachine:
+    resource_group: "{{ resource_group }}"
+    name: "{{ vm_name }}"
+    vm_size: "{{ vm_size }}"
+    admin_username: "{{ admin_username }}"
+    admin_password: "{{ admin_password }}"
+    ssh_password: "{{ ssh_password }}"
+    ssh_public_keys: "{{ ssh_keys }}"
+    image:
+      offer: "{{ offer }}"
+      publisher: "{{ publisher }}"
+      sku: "{{ sku }}"
+      version: "{{ version }}"
+  register: azure_created_vms
+
+- name: Log azure_created_vms
+  debug: 
+    var: azure_created_vms
+  when: verbose
+
+- name: Add new wms to a group
+  add_host: 
+    name: "{{ item.instance.ipv4 }}"
+    groups: azure_hosts
+  with_items: "{{ azure_created_vms.results }}"
