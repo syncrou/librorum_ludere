@@ -16,8 +16,8 @@ sku: 7.4
 # azure guest parameters
 vm_name: myazurevm1
 vm_size: Standard_A1
-admin_username: ansible-user
-admin_password: Manageiq2017!
+admin_username: 
+admin_password: 
 ssh_keys: 
 
 # enable debugging

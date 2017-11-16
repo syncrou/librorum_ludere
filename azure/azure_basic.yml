@@ -10,7 +10,7 @@
     - role: azure_basic_provision
 
     - role: azure_basic_postprovision
-      when: azure_created_vms is defined and manageiq is defined
+      when: manageiq is defined
 
 - name: Perform tasks on instances
   hosts: azure_hosts
