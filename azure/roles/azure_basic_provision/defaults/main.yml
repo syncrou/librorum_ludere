@@ -1,7 +1,7 @@
 ---
 # azure parameters
 location: westus2
-resource_group: res_group1
+resource_group: resgroup1
 network_name: "{{ resource_group }}-network" 
 network_cidr: 10.10.0.0/16
 subnet_name: "{{ resource_group }}-subnet"
