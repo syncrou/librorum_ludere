@@ -29,7 +29,13 @@
     name: "{{ subnet_name }}"
     address_prefix: "{{ subnet_cidr }}"
     virtual_network: "{{ network_name }}"
+  register: create_subnet_output
 
+- name: Log create_subnet_output
+  debug: 
+    var: create_subnet_output
+  when: verbose and create_subnet_output is defined
+  
 - name: Provision Azure Instance
   azure_rm_virtualmachine:
     resource_group: "{{ resource_group }}"
