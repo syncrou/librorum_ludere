@@ -3,6 +3,47 @@
   hosts: all
   gather_facts: false
 
+  pre_tasks:
+    - name: logging manageiq object
+      debug: var=manageiq
+    
+    - name: set the automate engine workspace url
+      set_fact:
+        aews_url: "{{ manageiq.api_url }}/api/{{ manageiq.automate_workspace }}"
+
+    - name: Fetch the Workspace
+      uri:
+        url: "{{ aews_url }}"
+        method: GET 
+        validate_certs: False
+        headers:
+          X-Auth-Token: "{{ manageiq.api_token }}"
+          Content-Type: "application/json" 
+        status_code: 200 
+      register: ae_workspace
+
+    - name: log ae_workspace
+      debug: var=ae_workspace
+
+  #   - name: Set the attributes in the root object
+  #     uri:
+  #       url: "{{ aews_url }}"
+  #       method: POST
+  #       body:
+  #         action: edit
+  #         resource: "{ 'objects': { 'root': {{ ae_workspace['json']['input']['method_parameters'] }} }, 'state_vars': {}}"
+  #       body_format: json
+  #       validate_certs: False
+  #       headers:
+  #         X-Auth-Token: "{{ manageiq.api_token }}"
+  #         Content-Type: "application/json" 
+  #       status_code: 200
+  #     register: output
+    
+  #   - name: log output
+  #     debug: var=output
+  when: manageiq is defined
+
   tasks:
     - name: SSH into instance
       shell: cat /etc/resolv.conf
