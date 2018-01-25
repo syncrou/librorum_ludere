@@ -30,7 +30,7 @@
     state: poweredon
   delegate_to: localhost
   with_items: "{{ vm_names }}"
-  async: "{{ async }}"
+  async: 1000
   register: vmware_created_vms
 
 - name: Log item.instance.ipv4

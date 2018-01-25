@@ -23,8 +23,5 @@ vlan: "{{ vm_vlan }}"
 snapshot: "{{ snapshot }}"
 linked_clone: "{{ linked_clone | defaut(true) }}"
 
-# Allow for asynchronous provisioning
-async: 1000
-
 # enable debugging
 verbose: false
