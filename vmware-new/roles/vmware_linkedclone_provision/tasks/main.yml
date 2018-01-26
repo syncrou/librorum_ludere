@@ -36,17 +36,10 @@
 
 - name: Wait for instance creation to complete
   async_status: jid={{ item.ansible_job_id }}
-  # register: vmware_jobs
-  until: item.instance.ipv4 is defined
+  register: vmware_jobs
+  until: vmware_jobs.finished
   retries: 300
   with_items: "{{ vmware_created_vms.results }}"
-
-# - name: Wait for instance creation to complete
-#   async_status: jid={{ item.ansible_job_id }}
-#   register: vmware_jobs
-#   until: vmware_jobs.finished
-#   retries: 300
-#   with_items: "{{ vmware_created_vms.results }}"
 
 - name: Log item.instance.ipv4
   debug: 
