@@ -39,7 +39,7 @@
   register: vmware_jobs
   until: vmware_jobs.finished
   retries: 300
-  with_items: vmware_created_vms.results
+  with_items: "{{ vmware_created_vms.results }}"
 
 - name: Log item.instance.ipv4
   debug: 
