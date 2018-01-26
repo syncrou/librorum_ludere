@@ -29,9 +29,9 @@
         # domain:  # Domain name for this network interface (Windows)
     state: poweredon
   delegate_to: localhost
-  async: 1000
-  poll: 0
   with_items: "{{ vm_names }}"
+  async: 3600
+  poll: 0
   register: vmware_created_vms
 
 - name: Log item.instance.ipv4
