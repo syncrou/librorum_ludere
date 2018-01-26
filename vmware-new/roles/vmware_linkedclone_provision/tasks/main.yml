@@ -30,9 +30,16 @@
     state: poweredon
   delegate_to: localhost
   with_items: "{{ vm_names }}"
+  register: vmware_created_vms
   async: 3600
   poll: 0
-  register: vmware_created_vms
+
+- name: Wait for instance creation to complete
+  async_status: jid={{ item.ansible_job_id }}
+  register: vmware_jobs
+  until: vmware_jobs.finished
+  retries: 300
+  with_items: vmware_created_vms.results
 
 - name: Log item.instance.ipv4
   debug: 
