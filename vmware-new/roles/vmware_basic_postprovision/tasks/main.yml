@@ -27,6 +27,13 @@
   set_fact:
     svc_url: "/api/{{ manageiq.service }}"
 
+- name: Get a service
+  manageiq_vmdb:
+    href: svc_url
+  register: service
+
+- debug: msg="service dialog is {{ service.options.dialog }}"
+
 - name: Log svc_url
   debug: 
     var: svc_url
